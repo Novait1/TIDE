@@ -1,6 +1,6 @@
 {
   "name": "tide-persona-runtime",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "潮汐 · A time-layered personality runtime for chat agents.",
   "type": "module",
   "main": "src/index.js",
@@ -9,7 +9,9 @@
     "./mood": "./src/mood.js",
     "./memory": "./src/memory.js",
     "./policy": "./src/policy.js",
-    "./persona": "./src/persona.js"
+    "./persona": "./src/persona.js",
+    "./relations": "./src/relations.js",
+    "./adapters/onebot": "./src/adapters/onebot.js"
   },
   "scripts": {
     "start": "node examples/basic.js",

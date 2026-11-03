@@ -101,6 +101,28 @@ onMessage(msg):
 
 只需要三样东西：一个状态文件、一个记忆存储、一个消息入口。LLM 和聊天通道都可以换。
 
+## 接入 OneBot v11
+
+`src/adapters/onebot.js` 是传输无关的翻译层：解析原始事件、拆 @/图片/语音、拼 `key`，再把回复发回去。
+
+```js
+import { handleOneBotEvent } from 'tide-persona-runtime/adapters/onebot';
+
+ws.onmessage = async (ev) => {
+  const event = JSON.parse(ev.data);
+  await handleOneBotEvent(event, {
+    tide,
+    send,                       // (action, params) => Promise
+    selfId: '<bot QQ>',
+    ownerIds: ['<owner QQ>'],
+    // 群里只回 @；私聊全回。概率/额度在 shouldReply 里加
+    shouldReply: (m) => !m.isGroup || m.mentioned,
+  });
+};
+```
+
+完整可运行的接法见 [`examples/onebot.js`](./examples/onebot.js)。
+
 ## 关键词 / GitHub topics
 
 `llm-agent` `chatbot` `personality` `emotion` `long-term-memory`
@@ -122,12 +144,17 @@ v0.1，参考实现骨架已可运行。已完成：
 - [x] 参考实现（Node.js，零依赖）
 - [x] 状态文件 / 记忆存储的最小 schema
 - [x] 示例人格配置
-- [x] 单测（18 项）+ GitHub Actions CI
+- [x] OneBot v11 适配器（传输无关的翻译层 + 示例）
+- [x] 单测（25 项）+ GitHub Actions CI
 
 后续：
 
-- [ ] 适配器接口（OneBot / 其他聊天通道）
-- [ ] 发布前补 CONTRIBUTING 与 issue 模板
+- [x] CONTRIBUTING 与 issue / PR 模板
+- [ ] 其他聊天通道适配器
+
+## 贡献
+
+见 [CONTRIBUTING.md](./CONTRIBUTING.md)。版本变化见 [CHANGELOG.md](./CHANGELOG.md)。
 
 ## License
 
