@@ -1,0 +1,29 @@
+{
+  "name": "tide-persona-runtime",
+  "version": "0.1.0",
+  "description": "潮汐 · A time-layered personality runtime for chat agents.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./mood": "./src/mood.js",
+    "./memory": "./src/memory.js",
+    "./policy": "./src/policy.js",
+    "./persona": "./src/persona.js"
+  },
+  "scripts": {
+    "start": "node examples/basic.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "llm-agent",
+    "chatbot",
+    "personality",
+    "emotion",
+    "long-term-memory",
+    "state-management",
+    "time-scales",
+    "prompt-engineering"
+  ],
+  "license": "MIT"
+}

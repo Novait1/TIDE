@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TIDE Episode",
+  "description": "海底 · 记忆层的一条情景记忆。",
+  "type": "object",
+  "required": ["text", "importance", "at"],
+  "properties": {
+    "id": { "type": "string" },
+    "text": { "type": "string", "minLength": 1 },
+    "people": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" }
+        }
+      }
+    },
+    "feel": { "type": "string" },
+    "importance": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "scope": { "type": "string", "description": "例如 group:123 / private:456；空表示可跨场景" },
+    "sensitive": { "type": "boolean" },
+    "publicText": { "type": "string", "description": "去掉名字和细节的公开版，跨场景召回时使用" },
+    "source": { "type": "string" },
+    "at": { "type": "number" },
+    "strength0": { "type": "number" },
+    "recalls": { "type": "integer", "minimum": 0 },
+    "lastRecall": { "type": "number" }
+  },
+  "additionalProperties": true
+}

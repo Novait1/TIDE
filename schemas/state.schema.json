@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TIDE Mood State",
+  "description": "浪 · 情绪层。所有数值 0~1，updated 为毫秒时间戳。",
+  "type": "object",
+  "required": ["mood", "energy", "clingy", "hunger", "thirst", "grudge", "affection"],
+  "properties": {
+    "mood": { "type": "number", "minimum": 0, "maximum": 1 },
+    "energy": { "type": "number", "minimum": 0, "maximum": 1 },
+    "clingy": { "type": "number", "minimum": 0, "maximum": 1 },
+    "hunger": { "type": "number", "minimum": 0, "maximum": 1 },
+    "thirst": { "type": "number", "minimum": 0, "maximum": 1 },
+    "grudge": { "type": "number", "minimum": 0, "maximum": 1 },
+    "affection": { "type": "number", "minimum": 0, "maximum": 1 },
+    "updated": { "type": "number" }
+  },
+  "additionalProperties": true
+}
